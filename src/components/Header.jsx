@@ -1,13 +1,13 @@
 import React from 'react';
-import { BookOpen } from 'lucide-react';
+
 
 export default function Header({ username, onOpenAuth, onLogout }) {
   return (
     <header className="sticky top-0 z-10 bg-black/80 backdrop-blur-md border-b border-zinc-900 px-6 py-4 pt-[max(1rem,env(safe-area-inset-top))]">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="bg-zinc-800 p-2 rounded-lg">
-            <BookOpen className="w-6 h-6 text-white" />
+          <div className="bg-zinc-800 p-1.5 rounded-lg flex items-center justify-center">
+            <img src="/logo.svg" alt="LexiSync Logo" className="w-7 h-7" />
           </div>
           <div>
             <h1 className="text-xl font-bold tracking-tight text-white leading-tight">LexiSync</h1>
