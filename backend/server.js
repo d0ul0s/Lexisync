@@ -47,6 +47,22 @@ mongoose.connect(MONGO_URI)
     // Start the server only AFTER a successful database connection
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
+      
+      // Anti-sleep mechanism for Render free tier
+      // Render automatically provides RENDER_EXTERNAL_URL for web services
+      const KEEP_ALIVE_URL = process.env.RENDER_EXTERNAL_URL; 
+      if (KEEP_ALIVE_URL) {
+        const https = require('https');
+        // Ping every 14 minutes (Render sleeps after 15 minutes of inactivity)
+        setInterval(() => {
+          https.get(KEEP_ALIVE_URL, (res) => {
+            console.log(`[Keep-Alive] Pinged ${KEEP_ALIVE_URL} - Status: ${res.statusCode}`);
+          }).on('error', (err) => {
+            console.error(`[Keep-Alive] Error: ${err.message}`);
+          });
+        }, 14 * 60 * 1000); 
+        console.log(`🕒 Keep-alive mechanism activated for ${KEEP_ALIVE_URL}`);
+      }
     });
   })
   .catch((error) => {
