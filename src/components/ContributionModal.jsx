@@ -62,6 +62,7 @@ export default function ContributionModal({ isOpen, onClose, onSubmit }) {
                 <option value="Adjective">Adjective</option>
                 <option value="Adverb">Adverb</option>
                 <option value="Pronoun">Pronoun</option>
+                <option value="Phrase">Phrase</option>
               </select>
             </div>
           </div>
