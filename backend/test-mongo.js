@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const uri = "mongodb+srv://trashashyaffirm_db_user:j89Q7QgIql8zIbTV@lexisync.7ezmocg.mongodb.net/?appName=Lexisync";
+const uri = process.env.MONGO_URI;
 
 mongoose.connect(uri)
   .then(() => {
